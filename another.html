@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Section</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Owl Carousel CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+
+  <style>
+    .menu-item { display: none; } /* Hide all items by default */
+    .menu-item.active { display: block; } /* Show filtered items */
+    .menu-item img{
+        width: 30% !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container mt-5">
+    <h2 class="text-center">Menu</h2>
+
+    <!-- Category Buttons -->
+    <div class="d-flex justify-content-center mb-4">
+      <button class="btn btn-primary me-2 category-filter" data-category="all">All</button>
+      <button class="btn btn-secondary me-2 category-filter" data-category="starters">Starters</button>
+      <button class="btn btn-secondary me-2 category-filter" data-category="main-course">Main Course</button>
+      <button class="btn btn-secondary me-2 category-filter" data-category="drinks">Drinks</button>
+    </div>
+
+    <!-- Owl Carousel for all items -->
+    <div id="menu-carousel" class="owl-carousel owl-theme">
+      <!-- Starters -->
+      <div class="item menu-item starters">
+        <img src="./images/Kaju Katli _ Cashew Fudge 1.png" class="d-block w-100" alt="Starter 1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Starter 1</h5>
+          <p>Delicious appetizer.</p>
+        </div>
+      </div>
+      <div class="item menu-item starters">
+        <img src="./images/Eye of the Dragon (Lychee Martini).jpg" class="d-block w-100" alt="Starter 2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Starter 2</h5>
+          <p>Tasty and crispy.</p>
+        </div>
+      </div>
+
+      <!-- Main Course -->
+      <div class="item menu-item main-course">
+        <img src="./images/menu-1.png" class="d-block w-100" alt="Main Course 1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Main Course 1</h5>
+          <p>Delightful entrée.</p>
+        </div>
+      </div>
+      <div class="item menu-item main-course">
+        <img src="./images/menu-2.png" class="d-block w-100" alt="Main Course 2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Main Course 2</h5>
+          <p>Full of flavors.</p>
+        </div>
+      </div>
+
+      <!-- Drinks -->
+      <div class="item menu-item drinks">
+        <img src="./images/lassi.jpg" class="d-block w-100" alt="Drink 1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Drink 1</h5>
+          <p>Refreshing beverage.</p>
+        </div>
+      </div>
+      <div class="item menu-item drinks">
+        <img src="./images/Minty Watermelon Fizz.jpg" class="d-block w-100" alt="Drink 2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Drink 2</h5>
+          <p>Cool and refreshing.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Static list of filtered items (displayed when a category is clicked) -->
+    <div id="filtered-items" class="row"></div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- jQuery and Owl Carousel JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      // Initialize Owl Carousel
+      $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        responsive: {
+          0: {
+            items: 1
+          },
+          600: {
+            items: 2
+          },
+          1000: {
+            items: 3
+          }
+        }
+      });
+
+      // Category Filter
+      $('.category-filter').click(function() {
+        var category = $(this).data('category');
+
+        // Handle button active state
+        $('.category-filter').removeClass('btn-primary').addClass('btn-secondary');
+        $(this).removeClass('btn-secondary').addClass('btn-primary');
+
+        // Show/hide carousel or static list based on category
+        if (category === 'all') {
+          $('#menu-carousel').show(); // Show carousel
+          $('#filtered-items').hide(); // Hide static list
+        } else {
+          $('#menu-carousel').hide(); // Hide carousel
+          $('#filtered-items').empty().show(); // Show static list
+
+          // Filter and show only the selected category items
+          $('.menu-item.' + category).each(function() {
+            var clonedItem = $(this).clone(); // Clone the carousel item
+            clonedItem.removeClass('owl-item').removeClass('active'); // Remove unnecessary Owl classes
+            $('#filtered-items').append(clonedItem); // Append to the static list
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu1.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>egg curry<img src="./images/star1.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;90/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu5.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>chiken curry<img src="./images/star3.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;150/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu6.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>chiken kabab<img src="./images/star2.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;70/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu7.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>chiken biriyani<img src="./images/star1.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;150/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu23.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>palak panner<img src="./images/star2.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;130/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu24.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>pineapple juice<img src="./images/star3.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;30/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu25.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>aam lassi<img src="./images/star1.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;25/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu26.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>watermellon juice<img src="./images/star3.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;30/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu27.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>watermellon juice<img src="./images/star2.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;70/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu8.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>mutton biriyani<img src="./images/star3.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;200/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu9.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>basanti polao<img src="./images/star3.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;110/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu10.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>aalu paratha<img src="./images/star2.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;50/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu17.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>jilipi<img src="./images/star3.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;10/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu18.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>misti doi<img src="./images/star1.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;30/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu19.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>aam panna<img src="./images/star2.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;25/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu11.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>omlet<img src="./images/star1.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;20/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu12.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>koraisuti kochuri<img src="./images/star2.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;32/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu13.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>chingri macher malaikari<img src="./images/star3.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;190/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu14.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>gulap jamun<img src="./images/star3.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;50/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu15.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>rosogolla<img src="./images/star1.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;30/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu16.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>rosomalai<img src="./images/star1.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;30/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu3.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>paneer curry<img src="./images/star3.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;75/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu4.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>macher paturi<img src="./images/star1.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;120/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu20.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>lichi juice<img src="./images/star1.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;45/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu21.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>lassi<img src="./images/star1.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;25/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="item-details">
+  <div class="row">
+      <div class="col-lg-2">
+          <img src="./images/menu22.jpg" alt="">
+      </div>
+      <div class="col-lg-10">
+          <div class="item-nm">
+              <div class="nm-dtl">
+                  <h5>anar juice<img src="./images/star2.png" alt=""></h5>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut delectus placeat
+                      minima fugit? Debitis eaque ea corrupti. Aliquid, officia eius!</p>
+                  <div class="itm-prc">
+                      <p>&#8377;45/<span class="plt">plate</span></p>
+                  </div>
+              </div>
+
+              <div class="itm-btns">
+                  <button class="btn by-btn">buy now</button>
+                  <button class="btn ad-btn">Add</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
